@@ -24,22 +24,23 @@ PARAMETERS = [
 ]
 
 
-class TestCatClass:
-    @pytest.mark.parametrize(*PARAMETERS)
-    def test_create_cat(self, name, age):
-        cat = Cat(name, age)
+@pytest.mark.parametrize(*PARAMETERS)
+def test_create_cat(name, age):
+    cat = Cat(name, age)
 
-        assert cat.name == name
-        assert cat.age == age
+    assert cat.name == name
+    assert cat.age == age
 
-    @pytest.mark.parametrize(*PARAMETERS)
-    def test_info_method(self, name, age):
-        cat = Cat(name, age)
 
-        assert cat.info() == {"cat": name, "age": age}
+@pytest.mark.parametrize(*PARAMETERS)
+def test_info_method(name, age):
+    cat = Cat(name, age)
 
-    @pytest.mark.parametrize(*PARAMETERS)
-    def test_voice_method(self, name, age):
-        cat = Cat(name, age)
+    assert cat.info() == {"cat": name, "age": age}
 
-        assert cat.voice() == f"{name}: Meow!"
+
+@pytest.mark.parametrize(*PARAMETERS)
+def test_voice_method(name, age):
+    cat = Cat(name, age)
+
+    assert cat.voice() == f"{name}: Meow!"
